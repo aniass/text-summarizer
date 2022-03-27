@@ -5,18 +5,22 @@ import en_core_web_sm
 nlp = en_core_web_sm.load()
 stopwords = list(STOP_WORDS)
 
-path = 'C:\\Users\\PC\\Git_projects\\Text_summary\\data\\text1.txt'
+path = '\\data\\text1.txt'
 
 
 def read_data(filepath):
+    """Function to read text data"""
     with open(filepath) as file:
         text = file.read()
         return text
 
 
 def get_summary(text):
+    """Function to calculating word frequency"""
+    # build an nlp object
     doc = nlp(text)
-  
+    
+    # calculating word frequencies
     word_frequencies = {}
     for word in doc:
         if word.text.lower() not in stopwords:
@@ -24,11 +28,13 @@ def get_summary(text):
                 word_frequencies[word.text] = 1
             else:
                 word_frequencies[word.text] += 1
-
+                
+    # calculating maximum frequency
     max_frequency = max(word_frequencies.values())
     for word in word_frequencies.keys():
         word_frequencies[word] = word_frequencies[word]/max_frequency
 
+    # calculating sentence score 
     sent_tokens = [sent for sent in doc.sents]
     sentence_scores = {}
     for sent in sent_tokens:
