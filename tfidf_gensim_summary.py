@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from gensim.summarization.summarizer import summarize
 nltk.download('punkt')
 
-path = 'C:\\Users\\PC\\Git_projects\\Text_summary\\data\\text1.txt'
+path = '\data\text1.txt'
 
 
 def read_data(filepath):
@@ -36,13 +36,13 @@ def create_summary(text):
 
     # getting summary
     index = 0
-    summary1 = []
+    summary = []
     for i in sent_score:
         if (i > (avg_sent)):
-            summary1.append(tokens[index])
+            summary.append(tokens[index])
         index += 1
     output_text = ''
-    for i in summary1:
+    for i in summary:
         output_text = output_text + str(i)
     return output_text
 
