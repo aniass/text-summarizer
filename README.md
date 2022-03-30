@@ -8,6 +8,8 @@ In our analysis we used data come from [BBC news](https://www.bbc.com/news).
 
 ## Project contains:
 - text summarization by using several methods - Text_summary.ipynb
+- text summary by word frequency model with spacy - spacy_summary.py
+- text summary by TF-IDF model and gensim library - tfidf_gensim_summary.py 
 - data - data used in the project.
 
 ## Technologies
