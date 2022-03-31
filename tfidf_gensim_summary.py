@@ -14,7 +14,7 @@ def read_data(filepath):
         return text
 
 
-def create_summary(text):
+def create_tfidf_summary(text):
     """Function to get summary by TF-IDF"""
     # split the tokens
     tokens = sent_tokenize(text)
@@ -55,7 +55,7 @@ def gensim_summary(text):
 
 def main():
     text = read_data(path)
-    summary = create_summary(text)
+    summary = create_tfidf_summary(text)
     summary_two = gensim_summary(text)
     print(f'The summary created by TF IDF method:\n {summary}')
     print('----------------------------------')
