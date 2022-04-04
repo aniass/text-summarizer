@@ -5,7 +5,7 @@ import en_core_web_sm
 nlp = en_core_web_sm.load()
 stopwords = list(STOP_WORDS)
 
-path = '\\data\\text1.txt'
+path = '\data\text1.txt'
 
 
 def read_data(filepath):
