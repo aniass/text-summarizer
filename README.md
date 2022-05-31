@@ -6,6 +6,11 @@ Text summarization based on extractive and abstractive methods by using python. 
 ### Dataset
 In this project I have used an article coming from [BBC news](https://www.bbc.com/news).
 
+## Motivation
+One of the application of text analysis and NLP is Text Summarization. It is a technique of shortening long pieces of text into a short message. The intention is to create a cohesive and fluent summary include only the main points outlined in the document. Text summarization can be divided into two categories - Extractive Summarization and Abstractive Summarization.
+- **Extractive Summarization** is based on an extracting several parts, such as phrases and sentences, from a piece of text and stack them together to create a summary. It is important to identifying important phrases or sentences from the original text because it is of utmost importance in this method.
+- **Abstractive Summarization** is a relies on generating new sentences from the original text. The sentences generated through this approach might not even be present in the original text. In these methods most often use advanced NLP techniques.
+
 ## Project contains:
 - text summarization by using several methods - **Text_summary.ipynb**
 - text summary by word frequency model with spacy - **spacy_summary.py**
