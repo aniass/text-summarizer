@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from gensim.summarization.summarizer import summarize
 nltk.download('punkt')
 
-path = '\data\text1.txt'
+PATH = '\data\text1.txt'
 
 
 def read_data(filepath):
@@ -54,7 +54,7 @@ def gensim_summary(text):
 
 
 def main():
-    text = read_data(path)
+    text = read_data(PATH)
     summary = create_tfidf_summary(text)
     summary_two = gensim_summary(text)
     print(f'The summary created by TF IDF method:\n {summary}')
