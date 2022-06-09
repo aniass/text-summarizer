@@ -5,7 +5,7 @@ import en_core_web_sm
 nlp = en_core_web_sm.load()
 stopwords = list(STOP_WORDS)
 
-path = '\data\text1.txt'
+PATH = '\data\text1.txt'
 
 
 def read_data(filepath):
@@ -53,7 +53,7 @@ def get_summary(text):
 
 
 def main():
-    text = read_data(path)
+    text = read_data(PATH)
     summary = get_summary(text)
     print(summary)
 
