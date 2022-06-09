@@ -1,7 +1,7 @@
 from transformers import pipeline
 from transformers import BartTokenizer, BartForConditionalGeneration
 
-path = '/data/text1.txt'
+PATH = '/data/text1.txt'
 
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
 model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
@@ -35,7 +35,7 @@ def bart_summary(text):
 
 
 def main():
-    text = read_data(path)
+    text = read_data(PATH)
     print(f'The summary created by transformers library:\n')
     get_summary(text)
     print('----------------------------------')
