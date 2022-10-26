@@ -27,4 +27,10 @@ One of the application of text analysis and NLP is Text Summarization. It is a t
 
 **Running the project:**
 
-To run this project use Jupyter Notebook or Google Colab.
+You can run the scripts in the terminal:
+
+    spacy_summary.py
+    tfidf_gensim_summary.py
+    bart_summary.py
+
+To run **Text_summary.ipynb** file use Jupyter Notebook or Google Colab.
