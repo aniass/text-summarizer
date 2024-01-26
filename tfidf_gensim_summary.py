@@ -1,10 +1,12 @@
+import os
 import nltk
 from nltk.tokenize import sent_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from gensim.summarization.summarizer import summarize
+
 nltk.download('punkt')
 
-path = '\data\text1.txt'
+PATH = os.path.join('data', 'text1.txt')
 
 
 def read_data(filepath):
@@ -47,20 +49,20 @@ def create_tfidf_summary(text):
     return output_text
 
 
-def gensim_summary(text):
+def gensim_summary(text, word_count=100):
     """Function to get summary by gensim library"""
-    summ_text = summarize(text, word_count=100)
+    summ_text = summarize(text, word_count=word_count)
     return summ_text
 
 
 def main():
-    text = read_data(path)
-    summary = create_tfidf_summary(text)
-    summary_two = gensim_summary(text)
-    print(f'The summary created by TF IDF method:\n {summary}')
-    print('----------------------------------')
-    print(f'The summary created by gensim library:\n {summary_two}')
-
+    text = read_data(PATH)
+    if text:
+        summary = create_tfidf_summary(text)
+        summary_two = gensim_summary(text)
+        print(f'The summary created by TF IDF method:\n {summary}')
+        print('----------------------------------')
+        print(f'The summary created by gensim library:\n {summary_two}')
 
 if __name__ == '__main__':
     main()
