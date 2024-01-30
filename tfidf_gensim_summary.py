@@ -11,9 +11,13 @@ PATH = os.path.join('data', 'text1.txt')
 
 def read_data(filepath):
     """Function to read text data"""
-    with open(filepath) as file:
-        text = file.read()
-        return text
+    try:
+        with open(filepath) as file:
+            text = file.read()
+            return text
+    except FileNotFoundError:
+        print(f"Error: File not found at {filepath}")
+        return None
 
 
 def create_tfidf_summary(text):
