@@ -22,34 +22,15 @@ def read_data(filepath):
 
 def create_tfidf_summary(text):
     """Function to get summary by TF-IDF"""
-    # split the tokens
     tokens = sent_tokenize(text)
-
-    # create a tf-idf vectorizer
     vectorizer = TfidfVectorizer(stop_words='english')
     tf_idf = vectorizer.fit_transform(tokens)
 
-    # calculating sentence score
-    sent_index = 0
-    sent_score = []
-    for i in tf_idf:
-        score = i.sum()/len(i.data)
-        sent_index += 1
-        sent_score.append(score)
+    sentence_score = [i.sum() / len(i.data) for i in tf_idf]
+    avg_sent = sum(sentence_score)/len(sentence_score)
 
-    # calculating average of sentence scores
-    avg_sent = sum(sent_score)/len(sent_score)
-
-    # getting summary
-    index = 0
-    summary = []
-    for i in sent_score:
-        if (i > (avg_sent)):
-            summary.append(tokens[index])
-        index += 1
-    output_text = ''
-    for i in summary:
-        output_text = output_text + str(i)
+    summary = [tokens[index] for index, score in enumerate(sentence_score) if score > avg_sent]
+    output_text = ''.join([str(i) for i in summary])
     return output_text
 
 
@@ -64,9 +45,9 @@ def main():
     if text:
         summary = create_tfidf_summary(text)
         summary_two = gensim_summary(text)
-        print(f'The summary created by TF IDF method:\n {summary}')
+        print(f'The summary created by TF IDF method:\n{summary}')
         print('----------------------------------')
-        print(f'The summary created by gensim library:\n {summary_two}')
+        print(f'The summary created by gensim library:\n{summary_two}')
 
 if __name__ == '__main__':
     main()
