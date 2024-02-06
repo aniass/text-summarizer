@@ -1,6 +1,7 @@
+import os
 from transformers import pipeline, BartTokenizer, BartForConditionalGeneration
 
-PATH = '/data/text1.txt'
+PATH = os.path.join('data', 'text1.txt')
 
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
 model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
@@ -8,9 +9,13 @@ model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
 def read_data(filepath):
     """Function to read text data"""
-    with open(filepath) as file:
-        text = file.read()
-        return text
+    try:
+        with open(filepath) as file:
+            text = file.read()
+            return text
+    except FileNotFoundError:
+        print(f"Error: File not found at {filepath}")
+        return None
 
 
 def transformers_summary(text):
