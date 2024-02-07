@@ -1,3 +1,4 @@
+import os
 from spacy.lang.en.stop_words import STOP_WORDS
 from heapq import nlargest
 import en_core_web_sm
@@ -5,14 +6,18 @@ import en_core_web_sm
 nlp = en_core_web_sm.load()
 stopwords = list(STOP_WORDS)
 
-PATH = '\data\text1.txt'
+PATH = os.path.join('data', 'text1.txt')
 
 
 def read_data(filepath):
     """Function to read text data"""
-    with open(filepath) as file:
-        text = file.read()
-        return text
+    try:
+        with open(filepath) as file:
+            text = file.read()
+            return text
+    except FileNotFoundError:
+        print(f"Error: File not found at {filepath}")
+        return None
 
 
 def get_summary(text):
