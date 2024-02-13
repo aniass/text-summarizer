@@ -1,10 +1,10 @@
 import os
+import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from heapq import nlargest
-import en_core_web_sm
 
-nlp = en_core_web_sm.load()
-stopwords = list(STOP_WORDS)
+nlp = spacy.load('en_core_web_sm')
+stopwords = set(STOP_WORDS)
 
 PATH = os.path.join('data', 'text1.txt')
 
