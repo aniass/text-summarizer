@@ -21,11 +21,11 @@ def read_data(filepath):
 
 
 def get_summary(text):
-    """Function to calculating word frequency"""
-    # build an nlp object
+    """Function to calculate word frequency"""
+    # Build an nlp object
     doc = nlp(text)
     
-    # calculating word frequencies
+    # Calculate word frequencies
     word_frequencies = {}
     for word in doc:
         if word.text.lower() not in stopwords:
@@ -34,12 +34,12 @@ def get_summary(text):
             else:
                 word_frequencies[word.text] += 1
                 
-    # calculating maximum frequency
+    # Calculate maximum frequency
     max_frequency = max(word_frequencies.values())
     for word in word_frequencies.keys():
         word_frequencies[word] = word_frequencies[word]/max_frequency
 
-    # calculating sentence score 
+    # Calculate sentence score 
     sent_tokens = [sent for sent in doc.sents]
     sentence_scores = {}
     for sent in sent_tokens:
@@ -53,8 +53,8 @@ def get_summary(text):
     length = int(len(sentence_scores) * 0.3)
     summary = nlargest(length, sentence_scores, key=sentence_scores.get)
     final_summary = [word.text for word in summary]
-    summary = ''.join(final_summary)
-    return summary
+    final_summary = ''.join(final_summary)
+    return final_summary
 
 
 def main():
